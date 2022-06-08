@@ -1,4 +1,3 @@
 django
 django-crispy-forms
 paho-mqtt
-django-heroku
