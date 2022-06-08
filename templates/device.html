@@ -1,0 +1,22 @@
+{% extends "header.html" %}
+
+{% block content %}
+    <h1>Device: {{ device.name }}</h1>
+    <p>Last update:{{ device.last_update }}</p>
+    {#button to increase temperature#}
+    <button type="button" class="btn btn-primary"
+            onclick="location.href='{% url 'device_control' device_id=device.id temperature_delta=1 %}'">Increase
+        Temperature
+    </button>
+    {#button to decrease temperature#}
+    <button type="button" class="btn btn-primary"
+            onclick="location.href='{% url 'device_control' device_id=device.id temperature_delta=-1 %}'">Decrease
+        Temperature
+    </button>
+    {#button to delete device#}
+    <button type="button" class="btn btn-danger"
+            onclick="location.href='{% url 'device_delete' device_id=device.id %}'">Delete Device
+    </button>
+
+
+{% endblock %}

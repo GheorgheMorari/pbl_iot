@@ -1,0 +1,28 @@
+{#check if the user is authenticated#}
+{% if user.is_authenticated %}
+    {#if the user is authenticated, display the logout link#}
+    {#Display the user username and profile link#}
+    <h2>Welcome, {{ user.username }}</h2>
+    <div class="navbar">
+        <a href="{% url 'logout' %}">Logout</a>
+        <a href="{% url 'index' %}">Home</a>
+        <a href="{% url 'profile' %}">Profile</a>
+    </div>
+{% else %}
+    {#if the user is not authenticated, display the login link#}
+    <h2>Welcome, Guest</h2>
+    <div class="navbar">
+        <a href="{% url 'register' %}">Register</a>
+        <a href="{% url 'login' %}">Login</a>
+        <a href="{% url 'index' %}">Home</a>
+    </div>
+{% endif %}
+{% if messages %}
+{% endif %}
+{% block content %}
+{% endblock content %}
+<ul class="messages">
+    {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>

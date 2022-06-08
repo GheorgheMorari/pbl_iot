@@ -1,0 +1,21 @@
+{% extends "header.html" %}
+
+{% block content %}
+    <h1>Profile of: {{ requested_user.username }}</h1>
+
+    {% if devices %}
+        {#for each device show hyperlink to device#}
+        <h2>Devices</h2>
+        <ul>
+            {% for device in devices %}
+                <li><a href="{% url 'device' device.id %}">{{ device.name }}</a></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    {% if devices %}
+    {% else %}
+        <h2>No devices configured</h2>
+    {% endif %}
+
+{% endblock %}
